@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Browser</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .control-panel { margin-bottom: 20px; display: flex; gap: 10px; }
+        input { padding: 8px; flex-grow: 1; }
+        button { padding: 8px 16px; }
+        .browser-display { 
+            border: 1px solid #ccc; 
+            position: relative;
+            overflow: hidden;
+        }
+        .browser-display img {
+            width: 100%;
+            display: block;
+            cursor: pointer;
+        }
+        .browser-display .click-marker {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Virtual Browser</h1>
+        
+        <div class="control-panel">
+            <input type="text" id="roomIdInput" placeholder="Enter Room ID">
+            <button id="createBtn">Create Room</button>
+            <button id="joinBtn">Join Room</button>
+        </div>
+        
+        <div class="control-panel">
+            <input type="text" id="urlInput" placeholder="Enter URL (e.g., https://example.com)" disabled>
+            <button id="goBtn" disabled>Go</button>
+        </div>
+        
+        <div class="browser-display" id="browserDisplay">
+            <!-- Screenshot will appear here -->
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
